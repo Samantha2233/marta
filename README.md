@@ -1,7 +1,7 @@
 # Marta Arrivals Exercise
 
 ![Application Screenshot](/public/screenshot.png)
-<img src='/screenshot.png' width='200px'>
+<img src='public/screenshot.png' width='200px'>
 
 This application gives the user a list of train stations to select as their Starting Point.
 Once they have selected a Starting Point, the app will display the next arrival times of that station.
