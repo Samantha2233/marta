@@ -45,32 +45,22 @@ const RailMap = ( ) =>  {
         stationNames[x].setAttribute('cursor', 'pointer')
       }
     }
-
-    // Add mouse events
-    // if(stationNames?.length) {
-    //   for (let x = 0; x < stationNames.length; x++) {
-    //     stationNames[x].addEventListener('click', (e) => {
-    //       selectStation({
-    //         value: e?.currentTarget?.dataset?.name.toUpperCase(),
-    //         label: capitalize(e?.currentTarget?.dataset?.name || '')
-    //       })
-    //     })
-    //     stationNames[x].addEventListener('mouseenter', (e) => highlightStation(e?.currentTarget?.dataset?.name))
-    //     stationNames[x].addEventListener('mouseleave', (e) => removeStationHighlight(e?.currentTarget?.dataset?.name))
-    //   }
-    // }
   }
   
 
   // select station as startingPoint or destination
-  const selectStation = (value: any) => {
-    if (startingPoint.value === '') {
-      setStartingPoint(value)
+  const selectStation = (station: any) => {
+    if(startingPoint.value === station.value) {
+      setStartingPoint({value: "", label: ""})
       return
+    }
+
+    if (startingPoint.value === '') {
+      setStartingPoint(station)
     } else if (destination.value === '') {
-      setDestination(value)
+      setDestination(station)
     } else {
-      setDestination(value)
+      setDestination(station)
     }
   }
 

@@ -16,6 +16,8 @@ export function ArrivalTimes() {
         if(startingPoint.value) {
             let times = getArrivalTimes()
             setFilteredTimes(times)
+        } else {
+            setFilteredTimes([])
         }
         // Simulate an API fetch
         setLoading(true)
