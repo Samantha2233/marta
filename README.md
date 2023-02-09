@@ -2,12 +2,14 @@
 
 ![Application Screenshot](/public/screenshot.png)
 
-This application gives the user a list of train stations to select as their Starting Point.
-Once they have selected a Starting Point, the app will display the next arrival times of that station.
+Marta Arrivals provides a list of train stations to select as a Starting Point.
+Once a Starting Point is selected, arrival times of that station will be displayed.
+The user has the option to click the Refresh button which would update the countdown times.
 
 ## Features
 - Typeahead / dropdown inputs
-- Interactive SVG map (click on a station to select it)
+- Interactive SVG map
+- Refresh to see updated count down to arrivals
 
 ## Tech
 - Zustand
@@ -17,14 +19,16 @@ Once they have selected a Starting Point, the app will display the next arrival 
 - chakra-ui
 - dayjs
 
-## Challenges
+## Simulated API
 One of the biggest challenges I faced during this exercise was connecting to the Marta API. After receiving the API key from Marta, I would consistently hit a CORS error: 
 
 <img src='public/error-screenshot.png' width='350px'>
 
-I tried proxying the request which would return a 403 Unauthorized Error.
-I considered setting up a back end to securely store the API key and build my own proxy. Alas, since this is a front end challenge, I decided to stick to focusing on the front end implementation.
+In attempt to proxy the request, it would return a 403 Unauthorized Error.
+
+After considering setting up a server to try to connect, (since this is a front end exercise!) I decided to stick to focusing on the front end implementation. Instead, I simulated an API request by immitating the structure of the Marta API and generating new times based on the current time. Then recalculating the countdown when the Refresh button is pressed.
 
 ## Next Steps
 - Successfully connect to Marta API
 - Make sure it is fully accessible
+- Fingure out the direction the user needs to go in to get to their destination and suggest accurate routes.
