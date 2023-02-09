@@ -2,14 +2,14 @@
 
 ![Application Screenshot](/public/screenshot.png)
 
-Marta Arrivals provides a list of train stations to select as a Starting Point.
-Once a Starting Point is selected, arrival times of that station will be displayed.
+Marta Arrivals provides a list of train stations to select as a starting point.
+Once a starting point is selected, arrival times of that station will be displayed.
 The user has the option to click the Refresh button which would update the countdown times.
 
 ## Features
 - Typeahead / dropdown inputs
 - Interactive SVG map
-- Refresh to see updated count down to arrivals
+- Refresh to see updated countdown to arrivals
 
 ## Tech
 - Zustand
@@ -26,9 +26,9 @@ One of the biggest challenges I faced during this exercise was connecting to the
 
 In attempt to proxy the request, it would return a 403 Unauthorized Error.
 
-After considering setting up a server to try to connect, (since this is a front end exercise!) I decided to stick to focusing on the front end implementation. Instead, I simulated an API request by immitating the structure of the Marta API and generating new times based on the current time. Then recalculating the countdown when the Refresh button is pressed.
+After considering setting up a server to try to connect, (since this is a front end exercise) I decided to stick to focusing on the front end implementation! Instead, I simulated an API request by immitating the structure of the Marta API and generated new times based on the current time. Then, recalculate the countdown when the Refresh button is pressed.
 
 ## Next Steps
 - Successfully connect to Marta API
 - Make sure it is fully accessible
-- Fingure out the direction the user needs to go in to get to their destination and suggest accurate routes.
+- Calculate the direction from the startingPoint to the destination to suggest accurate routes.
