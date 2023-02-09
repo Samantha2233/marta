@@ -21,13 +21,13 @@ export function DirectionsForm() {
                 <IoLocationSharp />
             </VStack>
 
-            <VStack alignItems='stretch'>
+            <VStack alignItems='stretch' w='88%'>
                 <Select
                     value={startingPoint?.value !== '' && startingPoint }
                     placeholder='Choose Starting Point'
                     name="startingPoint"
                     options={stations}
-                    onChange={(e: any) => setStartingPoint(e)}
+                    onChange={(e: any) => setStartingPoint(e)}                    
                 />
                  <Select
                     value={destination?.value !== '' && destination}
