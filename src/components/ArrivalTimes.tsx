@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 export function ArrivalTimes() {
     const [arrivalTimes, setArrivalTimes] = useState([])
     const startingPoint = useStore((state) => state.startingPoint)
+    const destintation = useStore((state) => state.destination)
 
     useEffect(() => {
         if(startingPoint.value) {
@@ -17,7 +18,6 @@ export function ArrivalTimes() {
 
     const getArrivalTimes = () => {
         const trainsArriving = data.filter(train => train.STATION === startingPoint.value)
-        // TD: figure out if train is going in correct direction
         return trainsArriving
     }
 

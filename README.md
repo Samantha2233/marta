@@ -6,7 +6,7 @@ This application gives the user a list of train stations to select as their Star
 Once they have selected a Starting Point, the app will display the next arrival times of that station.
 
 ## Features
-- Typeahead inputs
+- Typeahead / dropdown inputs
 - Interactive SVG map
 - Responsiveness
 

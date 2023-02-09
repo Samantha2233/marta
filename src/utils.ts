@@ -17,7 +17,10 @@ export const getAllStations = () => {
         const current = data[x].STATION
         if(!stations.includes(current)) {
             stations = [...stations,  current]
-            stationOptions = [...stationOptions, {'value': current, 'label': capitalize(current)}]
+            stationOptions = [...stationOptions, {
+                'value': current, 
+                'label': capitalize(current),
+            }]
         }
     }   
     return stationOptions
