@@ -6,6 +6,8 @@ Marta Arrivals provides a list of train stations to select as a starting point.
 Once a starting point is selected, arrival times of that station will be displayed.
 The user has the option to click the Refresh button which would update the countdown times.
 
+Disclaimer: The destination input doesn't do anything ATM!
+
 ## Features
 - Typeahead / dropdown inputs
 - Interactive SVG map
