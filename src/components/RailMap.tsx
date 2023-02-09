@@ -48,7 +48,7 @@ const RailMap = ( ) =>  {
   }
   
 
-  // select station as startingPoint or destination
+  // select/deselect station as startingPoint or destination
   const selectStation = (station: any) => {
     if(startingPoint.value === station.value) {
       setStartingPoint({value: "", label: ""})
