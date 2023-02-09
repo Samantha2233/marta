@@ -76,20 +76,19 @@ const RailMap = ( ) =>  {
 
   const highlightStation = (name: string) => {
     const capitalizedName = capitalize(name || '') 
-    const ctx = document.getElementById("svg")
-    const textElm = ctx?.getElementById(capitalizedName) 
+    const textElm = document.getElementById(capitalizedName) as unknown as SVGGraphicsElement
 
     // add background rectangle
     const existingRec = document.getElementById(`rectangle-${capitalizedName}`)
     if(textElm && existingRec == null) {
       textElm.setAttribute('fill', 'white')
-      const SVGRect = textElm?.getBBox();
+      const SVGRect = textElm?.getBBox() 
       const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-      rect.setAttribute("x", SVGRect.x - 3);
-      rect.setAttribute("y", SVGRect.y - 3);
-      rect.setAttribute("rx", 6);
-      rect.setAttribute("width", SVGRect.width + 6);
-      rect.setAttribute("height", SVGRect.height + 6);
+      rect.setAttribute("x", (SVGRect.x - 3).toString());
+      rect.setAttribute("y", (SVGRect.y - 3).toString());
+      rect.setAttribute("rx", '6');
+      rect.setAttribute("width", (SVGRect.width + 6).toString());
+      rect.setAttribute("height", (SVGRect.height + 6).toString());
       rect.setAttribute("fill", "black");
       rect.setAttribute("id", `rectangle-${capitalizedName}`);
       rect.setAttribute('data-name', name)
@@ -97,21 +96,20 @@ const RailMap = ( ) =>  {
     }
 
     // fill circle
-    const stationCircle = ctx?.querySelector(`[data-name="${capitalizedName}"]`) 
+    const stationCircle = document.querySelector(`[data-name="${capitalizedName}"]`) 
     stationCircle?.setAttribute('fill', 'black')
   }
 
   const removeStationHighlight = (name: string) => {
     const capitalizedName = capitalize(name || '') 
     if(name !== startingPoint.value && name !== destination.value) {
-      const ctx = document.getElementById("svg")
-      const textElm = ctx?.getElementById(capitalizedName) 
+      const textElm = document.getElementById(capitalizedName) 
       if(textElm) {
         textElm.setAttribute('fill', 'black')
         const rect = document.getElementById(`rectangle-${capitalizedName}`)
         rect?.parentElement?.removeChild(rect)
       }
-      const stationCircle = ctx?.querySelector(`[data-name="${capitalizedName}"]`) 
+      const stationCircle = document.querySelector(`[data-name="${capitalizedName}"]`) 
       stationCircle?.setAttribute('fill', 'white')
     }
   }
