@@ -54,7 +54,10 @@ const RailMap = ( ) =>  {
       setStartingPoint({value: "", label: ""})
       return
     }
-
+    if(destination.value === station.value) {
+      setDestination({value: "", label: ""})
+      return
+    }
     if (startingPoint.value === '') {
       setStartingPoint(station)
     } else if (destination.value === '') {
