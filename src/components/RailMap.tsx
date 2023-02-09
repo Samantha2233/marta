@@ -51,7 +51,7 @@ const RailMap = ( ) =>  {
     //   for (let x = 0; x < stationNames.length; x++) {
     //     stationNames[x].addEventListener('click', (e) => {
     //       selectStation({
-    //         value: e?.currentTarget?.dataset?.name,
+    //         value: e?.currentTarget?.dataset?.name.toUpperCase(),
     //         label: capitalize(e?.currentTarget?.dataset?.name || '')
     //       })
     //     })
@@ -75,9 +75,9 @@ const RailMap = ( ) =>  {
   }
 
   const highlightStation = (name: string) => {
+
     const capitalizedName = capitalize(name || '') 
     const textElm = document.getElementById(capitalizedName) as unknown as SVGGraphicsElement
-
     // add background rectangle
     const existingRec = document.getElementById(`rectangle-${capitalizedName}`)
     if(textElm && existingRec == null) {
@@ -94,7 +94,6 @@ const RailMap = ( ) =>  {
       rect.setAttribute('data-name', name)
       textElm?.parentElement?.insertBefore(rect, textElm)
     }
-
     // fill circle
     const stationCircle = document.querySelector(`[data-name="${capitalizedName}"]`) 
     stationCircle?.setAttribute('fill', 'black')
@@ -102,7 +101,7 @@ const RailMap = ( ) =>  {
 
   const removeStationHighlight = (name: string) => {
     const capitalizedName = capitalize(name || '') 
-    if(name !== startingPoint.value && name !== destination.value) {
+    if(capitalizedName !== startingPoint.label && capitalizedName !== destination.label) {
       const textElm = document.getElementById(capitalizedName) 
       if(textElm) {
         textElm.setAttribute('fill', 'black')
@@ -143,7 +142,7 @@ const RailMap = ( ) =>  {
           <circle cx={272.47} cy={749.5} r={8.5} strokeWidth={4} data-name={'Five Points Station'}
              onClick={(e) => {
               selectStation({
-                value: e?.currentTarget?.dataset?.name,
+                value: e?.currentTarget?.dataset?.name.toUpperCase(),
                 label: capitalize(e?.currentTarget?.dataset?.name || '')
               })
             }}
@@ -155,7 +154,7 @@ const RailMap = ( ) =>  {
             <circle cx={247.47} cy={749.5} r={7} data-name={'Cnn Center Station'}
                onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -166,7 +165,7 @@ const RailMap = ( ) =>  {
             <circle cx={222.47} cy={749.5} r={7} data-name={'Vine City Station'}
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -177,7 +176,7 @@ const RailMap = ( ) =>  {
             <circle cx={197.47} cy={749.5} r={7} data-name={'Ashby Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -187,7 +186,7 @@ const RailMap = ( ) =>  {
             <circle cx={322.47} cy={749.5} r={7} data-name={'King Memorial Station'} 
                onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -197,7 +196,7 @@ const RailMap = ( ) =>  {
             <circle cx={372.47} cy={749.5} r={7} data-name={'Inman Park Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -207,7 +206,7 @@ const RailMap = ( ) =>  {
             <circle cx={422.47} cy={749.5} r={7} data-name={'Edgewood Candler Park Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -217,7 +216,7 @@ const RailMap = ( ) =>  {
             <circle cx={497.47} cy={753.5} r={7} data-name={'East Lake Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -227,7 +226,7 @@ const RailMap = ( ) =>  {
             <circle cx={597.47} cy={753.5} r={7} data-name={'Avondale Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -237,7 +236,7 @@ const RailMap = ( ) =>  {
             <circle cx={672.47} cy={753.5} r={7} data-name={'Kensington Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -247,7 +246,7 @@ const RailMap = ( ) =>  {
             <circle cx={747.47} cy={753.5} r={7} data-name={'Indian Creek Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -257,7 +256,7 @@ const RailMap = ( ) =>  {
             <circle cx={272.47} cy={724.5} r={7} data-name={'Peachtree Center Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -267,7 +266,7 @@ const RailMap = ( ) =>  {
             <circle cx={272.47} cy={699.5} r={7} data-name={'Civic Center Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -277,7 +276,7 @@ const RailMap = ( ) =>  {
             <circle cx={272.47} cy={674.5} r={7} data-name={'North Ave Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -287,7 +286,7 @@ const RailMap = ( ) =>  {
             <circle cx={272.47} cy={649.5} r={7} data-name={'Midtown Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -297,7 +296,7 @@ const RailMap = ( ) =>  {
             <circle cx={272.47} cy={624.5} r={7} data-name={'Arts Center Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -307,7 +306,7 @@ const RailMap = ( ) =>  {
             <circle cx={325.51} cy={496.47} r={7} data-name={'Lindbergh Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -317,7 +316,7 @@ const RailMap = ( ) =>  {
             <circle cx={343.19} cy={403.79} r={7} data-name={'Buckhead Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -327,7 +326,7 @@ const RailMap = ( ) =>  {
             <circle cx={381.37} cy={446.26} r={7} data-name={'Lenox Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -337,7 +336,7 @@ const RailMap = ( ) =>  {
             <circle cx={522.79} cy={304.84} r={7} data-name={'Chamblee Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -347,7 +346,7 @@ const RailMap = ( ) =>  {
             <circle cx={593.5} cy={234.13} r={7} data-name={'Doraville Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -357,7 +356,7 @@ const RailMap = ( ) =>  {
             <circle cx={343.19} cy={228.79} r={7} data-name={'Medical Center Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -367,7 +366,7 @@ const RailMap = ( ) =>  {
             <circle cx={343.19} cy={178.79} r={7} data-name={'Dunwoody Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -377,7 +376,7 @@ const RailMap = ( ) =>  {
             <circle cx={343.18} cy={128.79} r={7} data-name={'Sandy Springs Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -387,7 +386,7 @@ const RailMap = ( ) =>  {
             <circle cx={343.18} cy={78.791} r={7} data-name={'North Springs Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -397,7 +396,7 @@ const RailMap = ( ) =>  {
             <circle cx={434.4} cy={393.23} r={7} data-name={'Brookhaven Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -407,7 +406,7 @@ const RailMap = ( ) =>  {
             <circle cx={159.53} cy={701.21} r={7} data-name={'Bankhead Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -417,7 +416,7 @@ const RailMap = ( ) =>  {
             <circle cx={122.47} cy={753.5} r={7} data-name={'West Lake Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -427,7 +426,7 @@ const RailMap = ( ) =>  {
             <circle cx={22.475} cy={753.5} r={7} data-name={'Hamilton E Holmes Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -437,7 +436,7 @@ const RailMap = ( ) =>  {
             <circle cx={234.97} cy={814.45} r={7} data-name={'West End Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -447,7 +446,7 @@ const RailMap = ( ) =>  {
             <circle cx={197.47} cy={879.41} r={7} data-name={'Oakland City Station'} 
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -457,7 +456,7 @@ const RailMap = ( ) =>  {
             <circle cx={159.97} cy={944.36} r={7} data-name={'Lakewood Station'}
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -467,7 +466,7 @@ const RailMap = ( ) =>  {
             <circle cx={72.474} cy={1095.9} r={7} data-name={'College Park Station'}
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -477,7 +476,7 @@ const RailMap = ( ) =>  {
             <circle cx={47.474} cy={1139.2} r={7} data-name={'Airport Station'}
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -487,7 +486,7 @@ const RailMap = ( ) =>  {
             <circle cx={297.47} cy={749.5} r={7} data-name={'Georgia State Station'}
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -497,7 +496,7 @@ const RailMap = ( ) =>  {
             <circle cx={259.97} cy={771.15} r={7} data-name={'Garnett Station'}
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -507,7 +506,7 @@ const RailMap = ( ) =>  {
             <circle cx={122.47} cy={1009.3} r={7} data-name={'East Point Station'}
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -517,7 +516,7 @@ const RailMap = ( ) =>  {
             <circle cx={547.47} cy={753.5} r={7} data-name={'Decatur Station'}
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -539,7 +538,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -564,7 +563,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -589,7 +588,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -614,7 +613,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -642,7 +641,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -669,7 +668,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -694,7 +693,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -722,7 +721,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -747,7 +746,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -772,7 +771,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -798,7 +797,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -820,7 +819,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -845,7 +844,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -870,7 +869,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -895,7 +894,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -920,7 +919,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -945,7 +944,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -971,7 +970,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1000,7 +999,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1026,7 +1025,7 @@ const RailMap = ( ) =>  {
                 xmlSpace='preserve'
                 onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1054,7 +1053,7 @@ const RailMap = ( ) =>  {
                 xmlSpace='preserve'
                 onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1082,7 +1081,7 @@ const RailMap = ( ) =>  {
                 xmlSpace='preserve'
                 onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1108,7 +1107,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1133,7 +1132,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1159,7 +1158,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1184,7 +1183,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1209,7 +1208,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1234,7 +1233,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1262,7 +1261,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1287,7 +1286,7 @@ const RailMap = ( ) =>  {
               xmlSpace='preserve'
               onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1313,7 +1312,7 @@ const RailMap = ( ) =>  {
                 xmlSpace='preserve'
                 onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1343,7 +1342,7 @@ const RailMap = ( ) =>  {
                 xmlSpace='preserve'
                 onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1363,7 +1362,7 @@ const RailMap = ( ) =>  {
                 xmlSpace='preserve'
                 onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1388,7 +1387,7 @@ const RailMap = ( ) =>  {
                 xmlSpace='preserve'
                 onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1416,7 +1415,7 @@ const RailMap = ( ) =>  {
                 xmlSpace='preserve'
                 onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1448,7 +1447,7 @@ const RailMap = ( ) =>  {
             xmlSpace='preserve'
             onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1477,7 +1476,7 @@ const RailMap = ( ) =>  {
             xmlSpace='preserve'
             onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}
@@ -1511,7 +1510,7 @@ const RailMap = ( ) =>  {
           xmlSpace='preserve'
           onClick={(e) => {
                 selectStation({
-                  value: e?.currentTarget?.dataset?.name,
+                  value: e?.currentTarget?.dataset?.name.toUpperCase(),
                   label: capitalize(e?.currentTarget?.dataset?.name || '')
                 })
               }}

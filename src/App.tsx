@@ -1,32 +1,15 @@
 import { HStack } from '@chakra-ui/react'
 import RailMap from './components/RailMap'
 import { SidePanel } from './components/SidePanel'
-import { getAllStations } from './utils'
-
-// const instance = axios.create({
-//   headers: {
-//     "content-type": "application/json",
-//     "Access-Control-Allow-Origin": "*"
-//   },
-// });
-
-// const getNextArrival = async () => {
-//   // let url = `http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apiKey=${API_KEY}`;
-//   let url = `https://developerservices.itsmarta.com:18096/railrealtimearrivals?apiKey=${process.env.API_KEY}`;
-//   try {
-//     const response = await instance.get(url);
-//     if (response.data) {
-//       console.log("response.data", response.data);
-//     }
-//   } catch (err) {
-//     console.log("error", err);
-//     return;
-//   }
-// };
+import { useStore } from './store'
+import { generateRandomTimes } from './utils'
 
 function App() {
-  // getNextArrival()
-  getAllStations()
+  // simulate getting new times from Marta API
+  const randomTimes = generateRandomTimes()
+  const setArrivalTimes = useStore((state) => state.setArrivalTimes)
+  setArrivalTimes(randomTimes)
+  
   return (
     <HStack alignItems='flex-start'>
       <SidePanel />

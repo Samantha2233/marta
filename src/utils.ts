@@ -1,4 +1,5 @@
 import { data } from  './data'
+import dayjs from 'dayjs';
 
 export const capitalize = (str: string) => {
     let lowerCase = str.toLowerCase()
@@ -24,4 +25,14 @@ export const getAllStations = () => {
         }
     }   
     return stationOptions
+}
+
+export const generateRandomTimes = () => {
+    data.forEach((train) => {
+        const waitingTime = Math.floor(Math.random() * 30)
+        const nextArr = dayjs().add(waitingTime, 'minutes').toISOString()
+        train['NEXT_ARR'] = nextArr
+        train['WAITING_TIME'] = waitingTime.toString()
+    })
+    return data
 }
