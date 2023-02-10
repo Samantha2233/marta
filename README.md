@@ -12,6 +12,7 @@ Disclaimer: The destination input doesn't do anything ATM!
 - Typeahead / dropdown inputs
 - Interactive SVG map
 - Refresh to see updated countdown to arrivals
+- Mobile responsive
 
 ## Tech
 - Zustand
@@ -33,6 +34,5 @@ After considering setting up a server to try to connect, (since this is a front 
 ## Next Steps
 - Successfully connect to Marta API
 - Refresh automatically every minute or two for a set amount of time (remove refresh button)
-- Make fully mobile responsive
 - Make sure it is fully accessible
 - Calculate the direction from the startingPoint to the destination to suggest accurate routes.
