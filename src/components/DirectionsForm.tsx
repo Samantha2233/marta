@@ -4,7 +4,7 @@ import { HiEllipsisVertical } from 'react-icons/hi2'
 import { IoLocationSharp } from 'react-icons/io5'
 import Select from 'react-select';
 import { getAllStations } from "../utils";
-import { useStore } from '../store'
+import { useStore, StationType } from '../store'
 
 export function DirectionsForm() {
     const stations = getAllStations()
@@ -27,14 +27,14 @@ export function DirectionsForm() {
                         placeholder='Choose Starting Point'
                         name="startingPoint"
                         options={stations}
-                        onChange={(e: any) => setStartingPoint(e)}                    
+                        onChange={(e: StationType) => setStartingPoint(e)}                    
                     />
                     <Select
                         value={destination?.value !== '' && destination}
                         placeholder='Choose  Destination'
                         name="destination"
                         options={stations}
-                        onChange={(e: any) => setDestination(e)}
+                        onChange={(e: StationType) => setDestination(e)}
                     />
                 </VStack>
             </HStack>

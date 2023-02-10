@@ -1,20 +1,37 @@
 import { create } from 'zustand'
 
-interface State {
-  startingPoint: any,
-  destination: any,
-  arrivalTimes: any,
+export interface StationType {
+  label: string,
+  value: string
+}
+
+export interface ArrivalTimesType {
+  DESTINATION: string,
+  DIRECTION: string,
+  EVENT_TIME: string,
+  LINE: string,
+  NEXT_ARR: string,
+  STATION: string,
+  TRAIN_ID: string,
+  WAITING_SECONDS: string,
+  WAITING_TIME: string
+}[]
+
+interface StateType {
+  startingPoint: StationType,
+  destination: StationType,
+  arrivalTimes: ArrivalTimesType | null,
   mapView: boolean,
-  setStartingPoint: (obj: any) => void,
-  setDestination: (obj: any) => void,
-  setArrivalTimes: (array: any) => void,
+  setStartingPoint: (obj: StationType) => void,
+  setDestination: (obj: StationType) => void,
+  setArrivalTimes: (array: ArrivalTimesType) => void,
   setMapView: (boolean: boolean) => void
 }
 
-export const useStore = create<State>((set) => ({
+export const useStore = create<StateType>((set) => ({
   startingPoint: {value: '', label: ''},
   destination: {value: '', label: ''},
-  arrivalTimes: [],
+  arrivalTimes: null,
   mapView: true,
   setStartingPoint: (obj) => set(() => ({startingPoint: obj})),
   setDestination: (obj) => set(() => ({destination: obj})),

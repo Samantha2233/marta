@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Flex, useMediaQuery } from '@chakra-ui/react'
-import { useStore } from '../store'
+import { StationType, useStore } from '../store'
 import { capitalize } from "../utils";
 
 const RailMap = ( ) =>  {
@@ -50,7 +50,7 @@ const RailMap = ( ) =>  {
   
 
   // select station as startingPoint or destination
-  const selectStation = (station: any) => {
+  const selectStation = (station: StationType) => {
     if(startingPoint.value === station.value) {
       setStartingPoint({value: "", label: ""})
       return

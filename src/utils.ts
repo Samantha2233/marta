@@ -1,5 +1,6 @@
 import { data } from  './data'
 import dayjs from 'dayjs';
+import { StationType } from './store';
 
 export const capitalize = (str: string) => {
     let lowerCase = str.toLowerCase()
@@ -13,7 +14,7 @@ export const capitalize = (str: string) => {
 // get all stations from arrivals response
 export const getAllStations = () => {
     let stations = [] as string[]
-    let stationOptions= [] as any
+    let stationOptions= [] as StationType[]
     for(let x = 0;  x <data.length;  x++) {
         const current = data[x].STATION
         if(!stations.includes(current)) {
