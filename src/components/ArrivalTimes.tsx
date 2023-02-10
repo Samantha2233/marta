@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { Box, Button, Divider, HStack, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Divider, HStack, Text, VStack, useMediaQuery } from "@chakra-ui/react";
 import { useStore } from '../store'
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
+
 
 export function ArrivalTimes() {
     const [filteredTimes, setFilteredTimes] = useState([])
@@ -10,7 +12,9 @@ export function ArrivalTimes() {
     const [loading, setLoading] = useState(false)
     const startingPoint = useStore((state) => state.startingPoint)
     const arrivalTimes = useStore((state) => state.arrivalTimes)
-    dayjs.extend(relativeTime);
+    const mapView = useStore((state) => state.mapView)
+    const setMapView = useStore((state) => state.setMapView)
+    const [isSmallerThan600] = useMediaQuery('(max-width: 600px)')
 
     useEffect(() => {
         if(startingPoint.value) {
@@ -59,7 +63,13 @@ export function ArrivalTimes() {
                 )
             })}
             {startingPoint.value && filteredTimes.length === 0 ? <Text pt='20px' color='grey'>No arrivals. Please try selecting another Starting Point.</Text> : null}
-            {startingPoint.value ? <Button mt='35px !important' onClick={() => setRefresh(!refresh)} isLoading={loading}>Refresh</Button> : null}
+            {startingPoint.value ? <Button mt='35px !important' onClick={() => setRefresh(!refresh)} isLoading={loading}>Refresh Arrival Times</Button> : null}
+
+            {isSmallerThan600 ? (
+                <Button onClick={() =>  setMapView(!mapView)}>
+                    {mapView ? 'Hide Map' : 'View Map'}
+                </Button>
+            ) : null}
         </VStack>
     )
 }

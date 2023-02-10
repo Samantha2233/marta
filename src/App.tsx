@@ -1,20 +1,25 @@
-import { HStack } from '@chakra-ui/react'
+import { Flex, useMediaQuery } from '@chakra-ui/react'
+import { useEffect } from 'react'
 import RailMap from './components/RailMap'
 import { SidePanel } from './components/SidePanel'
 import { useStore } from './store'
-import { generateRandomTimes } from './utils'
 
 function App() {
-  // simulate getting new times from Marta API
-  const randomTimes = generateRandomTimes()
-  const setArrivalTimes = useStore((state) => state.setArrivalTimes)
-  setArrivalTimes(randomTimes)
-  
+  const [isLargerThan600] = useMediaQuery('(min-width: 600px)')
+  const mapView = useStore((state) => state.mapView)
+  const setMapView = useStore((state) => state.setMapView)
+
+  useEffect(() => {
+    isLargerThan600 ?  setMapView(true) : setMapView(false)
+  }, [isLargerThan600])
+
   return (
-    <HStack alignItems='flex-start'>
+    <Flex alignItems='flex-start'
+     flexDir={isLargerThan600 ? 'row' : 'column'}
+     >
       <SidePanel />
-      <RailMap />
-    </HStack>
+      {mapView ? <RailMap/> : null}
+    </Flex>
   )
 }
 

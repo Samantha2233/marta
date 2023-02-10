@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Flex } from '@chakra-ui/react'
+import { useEffect } from "react";
+import { Flex, useMediaQuery } from '@chakra-ui/react'
 import { useStore } from '../store'
 import { capitalize } from "../utils";
 
@@ -8,10 +8,11 @@ const RailMap = ( ) =>  {
   const destination = useStore((state) => state.destination)
   const setStartingPoint = useStore((state) => state.setStartingPoint)
   const setDestination = useStore((state) => state.setDestination)
+  const [isSmallerThan800] = useMediaQuery('(max-width: 800px)')
 
   useEffect(() => {
     setUp()
-  })
+  }, [])
 
   useEffect(() => {
     // Highlight selected stations upon load
@@ -109,7 +110,12 @@ const RailMap = ( ) =>  {
 
   return (
     <Flex justifyContent='center' w='100%'>
-      <svg height={'100vh'}  viewBox='0 0 800 1200' id='svg'>
+      <svg 
+          height={isSmallerThan800 ? undefined : '100vh' } 
+          width={isSmallerThan800 ? '100%' : undefined} 
+          viewBox='0 0 800 1200' 
+          id='svg'
+        >
         <g fill='none' strokeWidth={8}>
           {/* Red Line */}
           <path
