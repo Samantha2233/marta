@@ -9,6 +9,7 @@ dayjs.extend(relativeTime);
 export function ArrivalTimes() {
     const [filteredTimes, setFilteredTimes] = useState([])
     const [refresh, setRefresh] = useState(false)
+    const [refreshVisible, setRefreshVisible] = useState(false)
     const [loading, setLoading] = useState(false)
     const startingPoint = useStore((state) => state.startingPoint)
     const arrivalTimes = useStore((state) => state.arrivalTimes)
@@ -17,18 +18,32 @@ export function ArrivalTimes() {
     const [isSmallerThan600] = useMediaQuery('(max-width: 600px)')
 
     useEffect(() => {
+        // Filter arrivals for selection
         if(startingPoint.value) {
             let times = getArrivalTimes()
             setFilteredTimes(times)
         } else {
             setFilteredTimes([])
         }
-        // Simulate an API fetch
+        setRefreshVisible(false)
+       
+        // Display refresh button after one minute
+        const refreshVisibleTimer = setTimeout(() => {
+            if(startingPoint.value) {
+                setRefreshVisible(true)
+            }
+        }, 61000)
+
+        // Simulate an API refetch
         setLoading(true)
-        const timer = setTimeout(() => {
+        const loadingTimer = setTimeout(() => {
             setLoading(false)
-          }, 700);
-          return () => clearTimeout(timer);
+        }, 700);
+
+        return () => {
+            clearTimeout(loadingTimer);
+            clearTimeout(refreshVisibleTimer);
+        }
     }, [startingPoint.value, refresh])
 
     const getArrivalTimes = () => {
@@ -63,8 +78,7 @@ export function ArrivalTimes() {
                 )
             })}
             {startingPoint.value && filteredTimes.length === 0 ? <Text pt='20px' color='grey'>No arrivals. Please try selecting another Starting Point.</Text> : null}
-            {startingPoint.value ? <Button mt='35px !important' onClick={() => setRefresh(!refresh)} isLoading={loading}>Refresh Arrival Times</Button> : null}
-
+            {refreshVisible ? <Button mt='35px !important' onClick={() => setRefresh(!refresh)} isLoading={loading}>Refresh Arrival Times</Button> : null}
             {isSmallerThan600 ? (
                 <Button onClick={() =>  setMapView(!mapView)}>
                     {mapView ? 'Hide Map' : 'View Map'}
