@@ -12,7 +12,7 @@ Disclaimer: The destination input doesn't do anything ATM!
 - Typeahead / dropdown inputs
 - Interactive SVG map
 - Refresh to see updated countdown to arrivals
-- Mobile responsive
+- Desktop / mobile responsive
 
 ## Tech
 - TypeScript
