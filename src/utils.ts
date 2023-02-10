@@ -30,7 +30,7 @@ export const getAllStations = () => {
 
 export const generateRandomTimes = () => {
     data.forEach((train) => {
-        const waitingTime = Math.floor(Math.random() * 30)
+        const waitingTime = Math.floor(Math.random() * 60)
         const nextArr = dayjs().add(waitingTime, 'minutes').toISOString()
         train['NEXT_ARR'] = nextArr
         train['WAITING_TIME'] = waitingTime.toString()

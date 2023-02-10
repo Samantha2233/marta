@@ -32,7 +32,7 @@ export function ArrivalTimes() {
     }, [startingPoint.value, refresh])
 
     const getArrivalTimes = () => {
-        const trainsArriving = Array(arrivalTimes).filter(train => train.STATION === startingPoint.value && dayjs(train['NEXT_ARR']).isAfter(dayjs(), 'minute'))
+        const trainsArriving = Array.isArray(arrivalTimes) && arrivalTimes.filter(train => train.STATION === startingPoint.value && dayjs(train['NEXT_ARR']).isAfter(dayjs(), 'minute'))
         const orderedArrivals = trainsArriving.sort((a,b) => parseInt(a['WAITING_TIME']) - parseInt(b['WAITING_TIME']) ) 
         // On refresh, get current countdown for each train arriving
         orderedArrivals.forEach((arrival) => {
