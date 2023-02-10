@@ -15,12 +15,13 @@ Disclaimer: The destination input doesn't do anything ATM!
 - Mobile responsive
 
 ## Tech
+- TypeScript
 - Zustand
+- Chakra UI
 - SVGR
 - Vite
-- react-select
-- chakra-ui
-- dayjs
+- React Select
+- Day.js
 
 ## Simulated API
 One of the biggest challenges I faced during this exercise was connecting to the Marta API. After receiving the API key from Marta, I would consistently hit a CORS error: 
@@ -34,5 +35,3 @@ After considering setting up a server to try to connect, (since this is a front 
 ## Next Steps
 - Successfully connect to Marta API
 - Refresh automatically every minute or two for a set amount of time (remove refresh button)
-- Make sure it is fully accessible
-- Calculate the direction from the startingPoint to the destination to suggest accurate routes.
