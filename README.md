@@ -2,7 +2,7 @@
 
 ![Application Screenshot](/public/screenshot.png)
 
-DEMO Link: https://marta-delta.vercel.app/
+DEMO LINK: https://marta-delta.vercel.app/
 
 Marta Arrivals provides a list of train stations to select as a starting point.
 Once a starting point is selected, arrival times of that station will be displayed.
